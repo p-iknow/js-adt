@@ -12,7 +12,7 @@ class LinkedList {
 
   append(element){
     const node = new Node(element);
-    let curren = null;
+    let current = null;
 
     // linke 리스트가 비어있다
     if(head === null) {
@@ -32,8 +32,35 @@ class LinkedList {
     // length 업데이트 
     length++;
   }
-  insert(postion, element){}
-  removeAt(postion){}
+  insert(position, element){}
+  removeAt(position){
+    // 범위 외의 값인지 체크하기
+    if ( position > length && position < 0) {
+      return null;
+    }
+    // 범위 내의 값이면 하기 로직 실행
+    let current = head;
+    let previous;
+    let index = 0;
+    // 첫번째 값일 경우 
+    if (position === 0){
+      head = current.next;
+      length--; 
+      return current.element
+    }
+
+    // index === postion 이면 종료
+    while (index < position) {
+      previous = current;
+      current = current.next;
+      index++;
+    }
+    // current 의 노드는 접근 방법이 사라져 
+    // 가비지 컬렉터에 의해 메모리가 회수된다.
+    previous.next = current.next;
+    length--;
+    return current.element;
+  }
   remove(element){}
   indexOf(elemnt){}
   isEmpty(){}
@@ -41,7 +68,3 @@ class LinkedList {
   toString(){}
   print(){} 
 }
-
-let list = new LinkedList();
-list.append(15);
-list.append(10);
