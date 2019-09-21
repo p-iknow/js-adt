@@ -1,15 +1,17 @@
 // 시작 숫자 부터 끝 숫자까지를 포함하는 배열을 만드는 함수
-function makeArray(start = 1, end = 9) {
-    var array = []
+const makeArray = (start = 1, end = 9) => {
+    const array = [];
     for (start; start < end + 1; start++) {
         array.push(start)
     }
     return array
 }
 
-function binarySearch(list, item) {
-    var low = 0, high = list.length, mid, guess;
-    while( low <= high) {
+const binarySearch = (list, item) => {
+    let low = 0
+    let high = list.length
+    let mid, guess;
+    while( low < high || low === high) {
         mid = Math.floor((low + high)/2)
         guess = list[mid]
         console.log(`low:${low}, high:${high} , Mid: ${mid}, guess: ${guess}, itme: ${item}`)
