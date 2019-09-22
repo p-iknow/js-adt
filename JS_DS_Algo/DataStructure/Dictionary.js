@@ -1,4 +1,4 @@
-import { defaultToString } from '../util';
+import { defaultToString } from '../util.js';
 import { ValuePair } from './models/value-pair';
 
 export default class Dictionary {
