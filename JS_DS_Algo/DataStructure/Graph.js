@@ -37,14 +37,16 @@ export default class Graph {
 
   toString() {
     let s = '';
-    for (let i = 0; i < this.vertices.length; i++) {
-      s += `${this.vertices[i]} -> `;
-      const neighbors = this.adjList.get(this.vertices[i]);
-      for (let j = 0; j < neighbors.length; j++) {
-        s += `${neighbors[j]} `;
-      }
+    this.vertices.forEach(vertice => {
+      s += `${vertice} -> `;
+      const neighbors = this.adjList.get(vertice);
+      neighbors.forEach(neighbor => {
+        s += `${neighbor} `;
+      });
+
       s += '\n';
-    }
+    });
+
     return s;
   }
 }
